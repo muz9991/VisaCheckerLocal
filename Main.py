@@ -4,7 +4,15 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
+import os
+from dotenv import load_dotenv
 
+# Load environment variables from .env file
+load_dotenv()
+
+# Get credentials from environment variables
+username = os.getenv('USERNAME')
+password = os.getenv('PASSWORD')
 # Setup WebDriver
 driver = webdriver.Chrome()  # Ensure the ChromeDriver path is set if needed
 
@@ -67,6 +75,6 @@ while True:
         break
     else:
         print("No appointments available, checking again in 60 seconds...")
-        time.sleep(60)
+        time.sleep(10)
 
 driver.quit()
